@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Identifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFB6C1, #FFD700);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Centered container for the message */
+        .message-container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 85%;
+            max-width: 600px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Styling for the prediction label */
+        .prediction-label {
+            font-size: 2em;
+            font-weight: 700;
+            color: #32CD32; /* Lime Green for label */
+            margin-bottom: 20px;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Styling for the prediction text */
+        .prediction-text {
+            font-size: 3em;
+            font-weight: 700;
+            color: #FF6347; /* Tomato red */
+            text-shadow: 0 4px 8px rgba(255, 99, 71, 0.7), 0 4px 12px rgba(255, 69, 0, 1);
+            margin-bottom: 25px;
+            animation: textGlow 2s infinite alternate;
+        }
+
+        /* Text glow animation */
+        @keyframes textGlow {
+            from { text-shadow: 0 4px 8px rgba(255, 99, 71, 0.7); }
+            to { text-shadow: 0 4px 12px rgba(255, 69, 0, 1); }
+        }
+
+        /* Button styling */
+        .retry-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #FF6347; /* Tomato red */
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .retry-button:hover {
+            background-color: #FF4500; /* Darker red-orange */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    {% if prediction %}
+    <div class="message-container">
+        <p class="prediction-label">Recommended Crop:</p>
+        <p class="prediction-text">{{ prediction }}</p>
+        <a href="/" class="retry-button">Try Again</a>
+    </div>
+    {% endif %}
+</body>
+</html>
